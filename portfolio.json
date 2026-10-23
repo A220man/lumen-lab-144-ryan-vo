@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "name": "lumen-lab-144-ryan-vo",
+  "owner": "A220man",
+  "email": "ryandtvo@gmail.com",
+  "domain": "AI/ML developer tools",
+  "summary": "Work in progress: lumen-lab-144-ryan-vo",
+  "workflows": [
+    "Generate natal chart from birth date/time/location with true solar time correction",
+    "Preview true solar time adjustment for shichen boundary verification",
+    "Validate birth data inputs with strict runtime type checking"
+  ],
+  "auth": "oidc-keycloak-saml-broker",
+  "llm_providers": [
+    "openai-compatible",
+    "anthropic",
+    "gemini",
+    "ollama"
+  ],
+  "status": "work-in-progress"
+}
