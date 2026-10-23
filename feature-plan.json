@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "current_feature": "project-skeleton",
+  "features": [
+    {
+      "id": "project-skeleton",
+      "title": "FastAPI + React project skeleton with Ziwei core engine",
+      "status": "done",
+      "acceptance": [
+        "Backend FastAPI app runs with /health endpoint",
+        "Frontend Vite+React+TS builds and serves",
+        "Ziwei core engine (calculateTrueSolarTime, generateChart) implemented in Python",
+        "API endpoint POST /api/v1/chart generates chart from birth info",
+        "Frontend form submits birth data and displays chart result",
+        "Tests pass for backend and frontend"
+      ],
+      "implementation": [
+        "backend/app/main.py",
+        "backend/app/api/v1/chart.py",
+        "backend/app/services/ziwei/engine.py",
+        "backend/app/services/ziwei/true_solar_time.py",
+        "backend/app/services/ziwei/calculations.py",
+        "backend/app/models/chart.py",
+        "backend/tests/test_ziwei_engine.py",
+        "frontend/package.json",
+        "frontend/vite.config.ts",
+        "frontend/src/main.tsx",
+        "frontend/src/App.tsx",
+        "frontend/src/components/ChartForm.tsx",
+        "frontend/src/components/ChartDisplay.tsx",
+        "frontend/src/api/client.ts"
+      ],
+      "tests": [
+        "backend/tests/test_ziwei_engine.py",
+        "backend/tests/test_api_chart.py",
+        "frontend/src/components/__tests__/ChartForm.test.tsx"
+      ]
+    },
+    {
+      "id": "true-solar-time-fix",
+      "title": "Fix true solar time calculation - use longitude + equation of time",
+      "status": "done",
+      "acceptance": [
+        "calculateTrueSolarTime uses longitude offset and NOAA equation of time",
+        "generateChart accepts longitude and uses true solar time for shichen determination",
+        "Boundary cases (HK 2025-12-31 23:00) produce correct 亥 shichen",
+        "Orphaned true-solar-time.ts logic ported and unified"
+      ],
+      "implementation": [
+        "backend/app/services/ziwei/true_solar_time.py",
+        "backend/app/services/ziwei/calculations.py"
+      ],
+      "tests": [
+        "backend/tests/test_ziwei_engine.py::TestTrueSolarTime::test_hong_kong_boundary_case",
+        "backend/tests/test_ziwei_engine.py::TestGenerateChart::test_hk_boundary_chart",
+        "backend/tests/test_api_chart.py::TestGenerateChart::test_hk_boundary_case"
+      ]
+    },
+    {
+      "id": "gender-validation",
+      "title": "Validate gender input - reject invalid values with RangeError",
+      "status": "done",
+      "acceptance": [
+        "generateChart throws RangeError for non-'male'/'female' gender values",
+        "Valid 'male'/'female' inputs work correctly",
+        "Regression tests for typo, empty string, null, undefined, number"
+      ],
+      "implementation": [
+        "backend/app/services/ziwei/calculations.py"
+      ],
+      "tests": [
+        "backend/tests/test_ziwei_engine.py::TestGenerateChart::test_gender_validation_rejects_invalid",
+        "backend/tests/test_ziwei_engine.py::TestGenerateChart::test_gender_validation_accepts_valid"
+      ]
+    },
+    {
+      "id": "mobile-ui-fix",
+      "title": "Fix mobile UI display issues (date picker, background colors)",
+      "status": "in_progress",
+      "acceptance": [
+        "Date picker works correctly on mobile",
+        "Background colors render properly",
+        "Responsive layout for chart display"
+      ],
+      "implementation": [
+        "frontend/src/components/ChartForm.tsx",
+        "frontend/src/index.css"
+      ],
+      "tests": []
+    },
+    {
+      "id": "auth-oidc",
+      "title": "OIDC authentication with Keycloak (demo mode)",
+      "status": "planned",
+      "acceptance": [
+        "Keycloak integration with authorization code + PKCE",
+        "Demo mode for localhost development",
+        "Protected API endpoints",
+        "Login/logout flow works"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "docker-ci",
+      "title": "Dockerfiles, compose, CI workflow",
+      "status": "done",
+      "acceptance": [
+        "Backend and frontend Dockerfiles with non-root users",
+        "docker-compose.yml with Keycloak and volumes",
+        "GitHub Actions CI: backend tests, frontend build/test, Docker builds",
+        "Healthchecks configured"
+      ],
+      "implementation": [
+        "backend/Dockerfile",
+        "frontend/Dockerfile",
+        "frontend/nginx.conf",
+        "docker-compose.yml",
+        ".github/workflows/ci.yml"
+      ],
+      "tests": []
+    }
+  ]
+}
