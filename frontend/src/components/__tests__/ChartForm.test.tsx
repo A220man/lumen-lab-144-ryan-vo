@@ -23,10 +23,8 @@ describe('ChartForm', () => {
   it('renders form with all required fields', () => {
     render(<ChartForm />);
     
-    expect(screen.getByLabelText('年份')).toBeInTheDocument();
-    expect(screen.getByLabelText('月份')).toBeInTheDocument();
-    expect(screen.getByLabelText('日期')).toBeInTheDocument();
-    expect(screen.getByLabelText('時辰 (小時)')).toBeInTheDocument();
+    expect(screen.getByLabelText('出生日期')).toBeInTheDocument();
+    expect(screen.getByLabelText('出生時間')).toBeInTheDocument();
     expect(screen.getByLabelText('性別')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '開始排盤' })).toBeInTheDocument();
   });

@@ -1,4 +1,4 @@
-# Lumen Lab - 紫微斗數排盤
+# Lumen Lab - 紫微斗數排盤 — Ryan Vo
 
 > Work in progress. This checkpoint may be incomplete or fail tests. See PLAN.md and STATUS.md before use.
 

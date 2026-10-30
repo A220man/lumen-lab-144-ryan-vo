@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.0.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
@@ -31,8 +35,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Equation of time calculation (removed double degrees conversion bug)
 - Day pillar reference index (戊辰 = index 4, not 5)
 - Hour pillar calculation per standard 五鼠遁
-
-### Security
-- Demo mode binds to 127.0.0.1 only
-- No hardcoded secrets or credentials
-- Input validation on all API endpoints
+- Mobile date/time picker: replaced number inputs with native `type="date"` and `type="time"` for proper mobile UX

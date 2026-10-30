@@ -76,8 +76,6 @@ export function ChartForm() {
     }
   };
 
-  const getCurrentYear = () => new Date().getFullYear();
-
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -89,84 +87,60 @@ export function ChartForm() {
         <section style={styles.formSection} aria-labelledby="form-title">
           <h2 id="form-title" style={styles.sectionTitle}>出生資料</h2>
           
-          <form onSubmit={handleSubmit} style={styles.form} noValidate>
-            <div style={styles.grid}>
-              <div style={styles.field}>
-                <label htmlFor="year" style={styles.label}>年份</label>
-                <input
-                  id="year"
-                  type="number"
-                  min="1900"
-                  max={getCurrentYear()}
-                  value={formData.year}
-                  onChange={(e) => handleChange('year', Number(e.target.value))}
-                  style={styles.input}
-                  required
-                  aria-required="true"
-                />
-              </div>
+            <form onSubmit={handleSubmit} style={styles.form} noValidate>
+              <div style={styles.grid}>
+                <div style={styles.field}>
+                  <label htmlFor="birthDate" style={styles.label}>出生日期</label>
+                  <input
+                    id="birthDate"
+                    type="date"
+                    value={`${formData.year}-${String(formData.month).padStart(2, '0')}-${String(formData.day).padStart(2, '0')}`}
+                    onChange={(e) => {
+                      const [year, month, day] = e.target.value.split('-').map(Number);
+                      handleChange('year', year);
+                      handleChange('month', month);
+                      handleChange('day', day);
+                    }}
+                    style={styles.input}
+                    required
+                    aria-required="true"
+                    max={new Date().toISOString().split('T')[0]}
+                  />
+                </div>
 
-              <div style={styles.field}>
-                <label htmlFor="month" style={styles.label}>月份</label>
-                <input
-                  id="month"
-                  type="number"
-                  min="1"
-                  max="12"
-                  value={formData.month}
-                  onChange={(e) => handleChange('month', Number(e.target.value))}
-                  style={styles.input}
-                  required
-                  aria-required="true"
-                />
-              </div>
+                <div style={styles.field}>
+                  <label htmlFor="birthTime" style={styles.label}>出生時間</label>
+                  <input
+                    id="birthTime"
+                    type="time"
+                    value={`${String(formData.hour).padStart(2, '0')}:00`}
+                    onChange={(e) => {
+                      const [hour] = e.target.value.split(':').map(Number);
+                      handleChange('hour', hour);
+                    }}
+                    style={styles.input}
+                    required
+                    aria-required="true"
+                    step="3600"
+                  />
+                </div>
 
-              <div style={styles.field}>
-                <label htmlFor="day" style={styles.label}>日期</label>
-                <input
-                  id="day"
-                  type="number"
-                  min="1"
-                  max="31"
-                  value={formData.day}
-                  onChange={(e) => handleChange('day', Number(e.target.value))}
-                  style={styles.input}
-                  required
-                  aria-required="true"
-                />
+                <div style={styles.field}>
+                  <label htmlFor="gender" style={styles.label}>性別</label>
+                  <select
+                    id="gender"
+                    value={formData.gender}
+                    onChange={(e) => handleChange('gender', e.target.value as 'male' | 'female')}
+                    style={styles.select}
+                    required
+                    aria-required="true"
+                  >
+                    {GENDER_OPTIONS.map((opt) => (
+                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
-
-              <div style={styles.field}>
-                <label htmlFor="hour" style={styles.label}>時辰 (小時)</label>
-                <input
-                  id="hour"
-                  type="number"
-                  min="0"
-                  max="23"
-                  value={formData.hour}
-                  onChange={(e) => handleChange('hour', Number(e.target.value))}
-                  style={styles.input}
-                  required
-                  aria-required="true"
-                />
-              </div>
-
-              <div style={styles.field}>
-                <label htmlFor="gender" style={styles.label}>性別</label>
-                <select
-                  id="gender"
-                  value={formData.gender}
-                  onChange={(e) => handleChange('gender', e.target.value as 'male' | 'female')}
-                  style={styles.select}
-                  required
-                  aria-required="true"
-                >
-                  {GENDER_OPTIONS.map((opt) => (
-                    <option key={opt.value} value={opt.value}>{opt.label}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
 
             <button
               type="button"
