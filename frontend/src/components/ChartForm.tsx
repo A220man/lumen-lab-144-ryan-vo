@@ -75,16 +75,15 @@ export function ChartForm() {
       setLoading(false);
     }
   };
-
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className="chart-form-container">
       <header style={styles.header}>
         <h1 style={styles.title}>紫微斗數排盤</h1>
         <p style={styles.subtitle}>基於瞿海藩《天紀》系統 · 真太陽時修正</p>
       </header>
 
       <main style={styles.main}>
-        <section style={styles.formSection} aria-labelledby="form-title">
+        <section style={styles.formSection} className="form-section" aria-labelledby="form-title">
           <h2 id="form-title" style={styles.sectionTitle}>出生資料</h2>
           
             <form onSubmit={handleSubmit} style={styles.form} noValidate>

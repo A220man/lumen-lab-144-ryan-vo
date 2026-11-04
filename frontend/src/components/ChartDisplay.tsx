@@ -31,7 +31,7 @@ const BRIGHTNESS_COLORS: Record<string, string> = {
 export function ChartDisplay({ chart }: ChartDisplayProps) {
   const { palaces = [], ...info } = chart;
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className="chart-display-container">
       <div style={styles.infoGrid}>
         <div style={styles.infoCard}>
           <h3 style={styles.infoTitle}>基本資料</h3>
