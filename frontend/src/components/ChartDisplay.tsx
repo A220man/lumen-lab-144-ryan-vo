@@ -177,7 +177,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   infoGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
     gap: 'var(--spacing-lg)',
     marginBottom: 'var(--spacing-xl)',
   },
@@ -228,7 +228,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   palacesGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
     gap: 'var(--spacing-md)',
   },
   palaceCard: {
