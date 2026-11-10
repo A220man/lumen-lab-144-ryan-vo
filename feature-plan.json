@@ -76,7 +76,7 @@
     {
       "id": "mobile-ui-fix",
       "title": "Fix mobile UI display issues (date picker, background colors)",
-      "status": "in_progress",
+      "status": "done",
       "acceptance": [
         "Date picker works correctly on mobile",
         "Background colors render properly",

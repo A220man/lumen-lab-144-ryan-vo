@@ -1,8 +1,20 @@
 # Changelog
 
+## 1.4.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.3.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+### Added
+- Mobile UI fixes: native date/time picker styling, responsive layout for chart display, background color rendering fixes
+
+### Fixed
+- Mobile date/time pickers now work correctly with proper touch targets and native appearance preserved
+- Background colors render properly on all devices without `!important` overrides
+- Responsive grid layouts for form and 12-palaces chart display on mobile and tablet
 
 ## 1.2.0 — work-in-progress checkpoint
 

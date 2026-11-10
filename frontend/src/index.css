@@ -17,15 +17,12 @@
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
-  
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
-  
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'SF Mono', 'Fira Code', monospace;
 }
@@ -81,7 +78,13 @@ input, select, textarea {
 /* Mobile date/time input styling - keep native appearance for pickers */
 input[type="date"], input[type="time"] {
   font-size: 16px;
-  /* Don't use appearance: none - it breaks native mobile pickers */
+  -webkit-appearance: none;
+  appearance: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+  color: var(--color-text);
 }
 
 /* Improve mobile touch targets */
@@ -102,31 +105,38 @@ input:focus, select:focus {
     --spacing-xl: 1.5rem;
   }
   /* Form grid stacks to single column on very small screens */
-  .form-section [style*="gridTemplateColumns"] {
+  .form-grid {
     grid-template-columns: 1fr !important;
   }
-  .palacesGrid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+  .palaces-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
     gap: var(--spacing-sm) !important;
   }
-  .infoGrid {
+  .info-grid {
     grid-template-columns: 1fr !important;
   }
   .container {
     padding: var(--spacing-md) !important;
   }
-  /* Reduce palace card padding on mobile */
-  .chart-display-container [style*="minmax(140px"] {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+}
+
+/* Tablet responsive adjustments */
+@media (max-width: 768px) and (min-width: 481px) {
+  .palaces-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+  }
+  .info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 
 /* Ensure background colors render correctly on all devices */
 body {
-  background-color: var(--color-bg) !important;
+  background-color: var(--color-bg);
 }
 .chart-display-container, .form-section {
-  background: var(--color-bg-card) !important;
+  background: var(--color-bg-card);
 }
 
 .sr-only {
