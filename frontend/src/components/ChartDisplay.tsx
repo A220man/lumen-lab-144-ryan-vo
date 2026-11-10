@@ -32,7 +32,7 @@ export function ChartDisplay({ chart }: ChartDisplayProps) {
   const { palaces = [], ...info } = chart;
   return (
     <div style={styles.container} className="chart-display-container">
-      <div style={styles.infoGrid}>
+      <div style={styles.infoGrid} className="info-grid">
         <div style={styles.infoCard}>
           <h3 style={styles.infoTitle}>基本資料</h3>
           <dl style={styles.infoList}>
@@ -100,7 +100,7 @@ export function ChartDisplay({ chart }: ChartDisplayProps) {
 
       <div style={styles.palacesSection}>
         <h3 style={styles.sectionTitle}>十二宮位星盤</h3>
-        <div style={styles.palacesGrid}>
+        <div style={styles.palacesGrid} className="palaces-grid">
           {palaces.map((palace, index) => (
             <PalaceCard key={palace.name} palace={palace} index={index} />
           ))}

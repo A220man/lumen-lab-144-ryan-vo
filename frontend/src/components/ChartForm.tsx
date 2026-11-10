@@ -87,7 +87,7 @@ export function ChartForm() {
           <h2 id="form-title" style={styles.sectionTitle}>出生資料</h2>
           
             <form onSubmit={handleSubmit} style={styles.form} noValidate>
-              <div style={styles.grid}>
+              <div style={styles.grid} className="form-grid">
                 <div style={styles.field}>
                   <label htmlFor="birthDate" style={styles.label}>出生日期</label>
                   <input
@@ -157,7 +157,7 @@ export function ChartForm() {
                   經度用於計算真太陽時（當地平太陽時），修正時辰邊界誤差。
                   香港約 114.17°E，北京約 116.4°E，台北約 121.5°E。
                 </p>
-                <div style={styles.grid}>
+                <div style={styles.grid} className="form-grid">
                   <div style={styles.field}>
                     <label htmlFor="longitude" style={styles.label}>經度</label>
                     <input

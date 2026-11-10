@@ -53,7 +53,7 @@ Tests: `backend/tests/test_ziwei_engine.py::TestGenerateChart::test_gender_valid
 
 ### mobile-ui-fix — Fix mobile UI display issues (date picker, background colors)
 
-Status: in_progress
+Status: done
 
 Acceptance:
 - Date picker works correctly on mobile
