@@ -1,8 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.v1 import chart as chart_router
-
 app = FastAPI(
     title="Lumen Lab - Ziwei Doushu",
     description="Ziwei Doushu chart generation API based on 瞿海藩《天纪》系统",
@@ -17,7 +15,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(chart_router.router, prefix="/api/v1")
+from app.api.v1.auth_routes import router as auth_router  # noqa: E402
+from app.api.v1.chart import router as chart_router  # noqa: E402
+
+app.include_router(auth_router, prefix="/auth", tags=["auth"])
+app.include_router(chart_router, prefix="/api/v1", tags=["chart"])
 
 
 @app.get("/health")

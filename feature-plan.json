@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "current_feature": "project-skeleton",
+  "current_feature": "auth-oidc",
   "features": [
     {
       "id": "project-skeleton",
@@ -91,15 +91,20 @@
     {
       "id": "auth-oidc",
       "title": "OIDC authentication with Keycloak (demo mode)",
-      "status": "planned",
+      "status": "done",
       "acceptance": [
         "Keycloak integration with authorization code + PKCE",
         "Demo mode for localhost development",
         "Protected API endpoints",
         "Login/logout flow works"
       ],
-      "implementation": [],
-      "tests": []
+      "implementation": [
+        "backend/app/api/v1/auth_routes.py",
+        "backend/app/main.py"
+      ],
+      "tests": [
+        "backend/tests/test_auth_routes.py"
+      ]
     },
     {
       "id": "docker-ci",

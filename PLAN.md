@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-project-skeleton
+auth-oidc
 
 ## Roadmap
 
@@ -64,13 +64,17 @@ Implementation: `frontend/src/components/ChartForm.tsx`, `frontend/src/index.css
 
 ### auth-oidc — OIDC authentication with Keycloak (demo mode)
 
-Status: planned
+Status: done
 
 Acceptance:
 - Keycloak integration with authorization code + PKCE
 - Demo mode for localhost development
 - Protected API endpoints
 - Login/logout flow works
+
+Implementation: `backend/app/api/v1/auth_routes.py`, `backend/app/main.py`
+
+Tests: `backend/tests/test_auth_routes.py`
 
 ### docker-ci — Dockerfiles, compose, CI workflow
 
