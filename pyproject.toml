@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lumen-lab-ziwei"
-version = "1.5.0"
+version = "1.6.0"
 description = "Ziwei Doushu chart generation API based on 瞿海藩《天紀》系統"
 readme = "README.md"
 license = {text = "MIT"}
