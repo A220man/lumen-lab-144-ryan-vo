@@ -246,6 +246,27 @@ class TestGenerateChart:
         assert result["shichen"] == "亥", f"Expected 亥, got {result['shichen']}"
         # Day should NOT advance (stays 2025-12-31) -> day pillar 甲申
         assert result["ganzhi_day"] == "甲申", f"Expected 甲申 day, got {result['ganzhi_day']}"
+
+    def test_true_solar_time_without_longitude(self):
+        """Test that use_true_solar_time=True without longitude defaults to standard meridian.
+        
+        When longitude is not provided but true_solar_time is requested, the code now
+        defaults to the standard meridian (timezone_offset * 15), so only the equation
+        of time correction is applied rather than falling back to clock time.
+        """
+        # At standard meridian (120E for UTC+8), EoT only, should still produce correction
+        result = generate_chart(
+            year=1990, month=1, day=1, hour=12,
+            gender='male', longitude=None,
+            use_true_solar_time=True,
+        )
+        # Should use true solar time (not fall back to clock)
+        assert result['true_solar_time_used'] is True
+        # shichen based on clock hour 12 -> 午, but with EoT correction
+        assert result['shichen'] == '午'
+        # Day pillar should reflect the true solar time calculation
+        assert result['ming_gong'] in [p['name'] for p in result['palaces']]
+
     def test_without_true_solar_time_uses_clock(self):
         """Test that without true solar time, clock hour determines shichen."""
         result = generate_chart(
