@@ -1,6 +1,6 @@
 # Lumen Lab - 紫微斗數排盤 — Ryan Vo
 
-Current version: `1.6.0`.
+Current version: `1.7.0`.
 
 > Work in progress. This checkpoint may be incomplete or fail tests. See PLAN.md and STATUS.md before use.
 

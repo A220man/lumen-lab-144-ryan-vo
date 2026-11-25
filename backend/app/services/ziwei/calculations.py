@@ -124,7 +124,10 @@ def generate_chart(
     true_solar_used = False
     true_solar_dt = base_dt
     
-    if use_true_solar_time and longitude is not None:
+    if use_true_solar_time:
+        if longitude is None:
+            # Default to standard meridian for the timezone (only equation of time correction)
+            longitude = timezone_offset * 15.0
         true_solar_dt = calculate_true_solar_time(base_dt, longitude, timezone_offset)
         true_solar_used = True
     
